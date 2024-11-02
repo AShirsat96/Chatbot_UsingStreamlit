@@ -122,21 +122,9 @@ Common issues and solutions:
 - **Memory Issues**: Reduce chunk size in the document processing
 - **Slow Responses**: Check internet connection and API rate limits
 
-## Contributing
-
-Contributions are welcome! Please feel free to submit:
-- Bug reports
-- Feature requests
-- Pull requests
-- Documentation improvements
-
-## License
-
-[Your chosen license]
-
 ## Contact
-
-[Your contact information]
+Aniket Shirsat
+Email: ashirsat@iu.edu
 
 ---
 **Note**: Customize this README with your specific implementation details and requirements.
