@@ -125,7 +125,7 @@ Common issues and solutions:
 ## Contact
 Aniket Shirsat
 
-Email: ashirsat@iu.edu
+Email: ashirsat96@gmail.com
+
 
 ---
-**Note**: Customize this README with your specific implementation details and requirements.
