@@ -125,8 +125,8 @@ Contributions welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 📞 Contact
-- LinkedIn: [https://www.linkedin.com/in/aniketshirsatsg/]
-- Email: [ashirsat96@gmail.com]
+- LinkedIn: https://www.linkedin.com/in/aniketshirsatsg/
+- Email: ashirsat96@gmail.com
 - GitHub: [@AShirsat96](https://github.com/AShirsat96)
 
 
