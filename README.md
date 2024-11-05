@@ -1,135 +1,98 @@
-# AI-Powered PDF Support Chatbot 🤖
+# Customer Support Chatbot
 
-[![Python](https://img.shields.io/badge/Python-3.7%2B-blue?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=Streamlit&logoColor=white)](https://streamlit.io/)
-[![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white)](https://openai.com/)
-[![LlamaIndex](https://img.shields.io/badge/LlamaIndex-Latest-green?style=for-the-badge)](https://github.com/jerryjliu/llama_index)
+A Streamlit-based chatbot application that answers questions about Portage Bill and Master's Cash System using OpenAI and LlamaIndex for document processing and retrieval.This chatbot can help ask any questions that are asked with regards to any customer support manual or any other document
 
-## 🎯 Overview
-An intelligent chatbot that revolutionizes customer support by automatically answering queries based on PDF documentation. The system uses OpenAI's GPT-3.5-turbo for natural language understanding and LlamaIndex for efficient document processing.
+## Prerequisites
 
-### 🌟 Key Features
-- **PDF Document Processing**: Automatically indexes support documentation
-- **Intelligent Q&A**: Uses GPT-3.5-turbo for accurate responses
-- **Context-Aware**: Maintains conversation history
-- **Real-time Processing**: Instant response generation
-- **User-friendly Interface**: Built with Streamlit
+- Python (version not specified in code)
+- Streamlit
+- LlamaIndex
+- OpenAI
+- NLTK
 
-## 🚀 Demo
-[Add a GIF or screenshot of your application here]
+## Installation
 
-## 🏗️ Architecture
-```mermaid
-graph TD
-    A[PDF Documents] --> B[Document Processor]
-    B --> C[Vector Index]
-    D[User Query] --> E[Chat Interface]
-    E --> F[Query Engine]
-    F --> C
-    C --> G[GPT-3.5-turbo]
-    G --> E
-```
+Install the required packages using pip:
 
-## 💻 Installation
-
-### Prerequisites
-- Python 3.7+
-- OpenAI API key
-- PDF documents for processing
-
-### Setup
 ```bash
-# Clone repository
-git clone https://github.com/AShirsat96/Chatbot_UsingPrivateData.git
-cd Chatbot_UsingPrivateData
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Set up environment variables
-export OPENAI_API_KEY='your-api-key'
+pip install streamlit llama_index openai nltk
 ```
 
-### Running the Application
-```bash
-streamlit run app.py
+## Configuration
+
+1. OpenAI API Key:
+   - Store your OpenAI API key in Streamlit secrets
+   - The application accesses it using: `st.secrets.openai_key`
+
+2. Data Directory:
+   - Place your documents in the following directory:
+   ```
+   C:/Users/Aniket/Documents/MyPythonProjects/Chatbot_UsingPrivateData/data
+   ```
+
+3. Page Configuration:
+   - Title: "Aniket Solutions Chatbot"
+   - Logo Path: "C:/Users/Aniket/Documents/Aniket Solutions/AS-logos/AS-logos_transparent.png"
+   - Layout: Centered
+   - Initial Sidebar State: Auto
+
+## Features
+
+1. Document Processing:
+   - Loads and indexes documents from the specified directory
+   - Uses LlamaIndex's SimpleDirectoryReader for document loading
+   - Implements caching for improved performance
+
+2. Chat Interface:
+   - Interactive chat input
+   - Message history tracking
+   - Real-time response generation
+   - Loading spinners for better user experience
+
+3. AI Configuration:
+   - Uses GPT-3.5-turbo model
+   - Temperature: 0.5
+   - Custom system prompt for technical responses
+   - Specialized in Portage Bill and Master's Cash System information
+
+## Code Structure
+
+```python
+# Main components:
+1. Page Configuration
+2. OpenAI API Setup
+3. Chat History Initialization
+4. Data Loading and Indexing
+5. Chat Engine Initialization
+6. User Input Processing
+7. Message Display
+8. Response Generation
 ```
 
-## 📊 Technical Implementation
+## Usage
 
-### Core Components
-1. **Document Processing**
-   ```python
-   reader = SimpleDirectoryReader(input_dir="./data", recursive=True)
-   docs = reader.load_data()
-   ```
+The chatbot:
+1. Loads with an initial welcome message
+2. Accepts user questions through the chat input
+3. Processes questions against the indexed documents
+4. Provides technical answers based on the document content
+5. Maintains conversation history within the session
 
-2. **Index Creation**
-   ```python
-   service_context = ServiceContext.from_defaults(
-       llm=OpenAI(model="gpt-3.5-turbo", temperature=0.5)
-   )
-   index = VectorStoreIndex.from_documents(docs, service_context=service_context)
-   ```
+## LlamaIndex Configuration
 
-3. **Chat Engine**
-   ```python
-   chat_engine = index.as_chat_engine(
-       chat_mode="condense_question",
-       verbose=True
-   )
-   ```
+```python
+settings = Settings(
+    llm=OpenAI(
+        model="gpt-3.5-turbo",
+        temperature=0.5,
+        system_prompt="You are an expert on the User Guide and your job is to answer technical questions. Assume that all questions are related to the User Guide. Keep your answers technical and based on facts – do not hallucinate features."
+    )
+)
+```
 
-## 🔧 Configuration Options
+## Chat Engine Features
 
-| Parameter | Description | Default |
-|-----------|-------------|---------|
-| Temperature | Response creativity | 0.5 |
-| Model | OpenAI model version | gpt-3.5-turbo |
-| Chat Mode | Conversation handling | condense_question |
-
-## 📈 Performance
-
-- Average response time: < 2 seconds
-- Document processing capacity: Up to 500 pages
-- Concurrent users supported: 100+
-
-## 🛡️ Security Features
-- API key encryption
-- Input sanitization
-- Rate limiting
-- Secure session management
-
-## 🎯 Use Cases
-1. **Technical Support**
-   - Product troubleshooting
-   - Feature inquiries
-   - Setup assistance
-
-2. **Documentation Search**
-   - Quick information retrieval
-   - Process guidance
-   - Technical specifications
-
-## 🔄 Future Enhancements
-- [ ] Multi-language support
-- [ ] Voice interface
-- [ ] Analytics dashboard
-- [ ] Custom training module
-- [ ] CRM integration
-
-## 👥 Contributing
-Contributions welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md) first.
-
-## 📝 License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 📞 Contact
-- LinkedIn: https://www.linkedin.com/in/aniketshirsatsg/
-- Email: ashirsat96@gmail.com
-- GitHub: [@AShirsat96](https://github.com/AShirsat96)
-
-
----
-
-
+- Mode: "condense_question"
+- Verbose output enabled
+- Response caching implemented
+- Real-time query processing
